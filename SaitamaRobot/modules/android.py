@@ -8,7 +8,7 @@ from telegram import Bot, Update, ParseMode
 from telegram.ext import Updater, CommandHandler
 from telegram.ext import CallbackContext, run_async
 from ujson import loads
-from AstrakoBot import dispatcher
+from Saitama import dispatcher
 
 link = "https://raw.githubusercontent.com/topjohnwu/magisk_files/"
 
