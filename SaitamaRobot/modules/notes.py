@@ -217,7 +217,7 @@ def slash_get(update: Update, context: CallbackContext):
         note_name = str(noteid).strip(">").split()[1]
         get(update, context, note_name, show_none=False)
     except IndexError:
-        update.effective_message.reply_text("Wrong Note ID 😾")
+        update.effective_message.reply_text("Wrong Note ID ")
 
 
 @run_async
@@ -230,7 +230,7 @@ def save(update: Update, context: CallbackContext):
     note_name, text, data_type, content, buttons = get_note_type(msg)
     note_name = note_name.lower()
     if data_type is None:
-        msg.reply_text("Dude, there's no note")
+        msg.reply_text("Bruh, there's no note")
         return
 
     sql.add_note_to_db(
@@ -252,7 +252,7 @@ def save(update: Update, context: CallbackContext):
                 "Bots are kinda handicapped by telegram, making it hard for bots to "
                 "interact with other bots, so I can't save this message "
                 "like I usually would - do you mind forwarding it and "
-                "then saving that new message? Thanks!")
+                "then saving that new message? Sanks!")
         return
 
 
@@ -269,7 +269,7 @@ def clear(update: Update, context: CallbackContext):
             update.effective_message.reply_text("Successfully removed note.")
         else:
             update.effective_message.reply_text(
-                "That's not a note in my database!")
+                "That's not a note in my MediaTek Debice!")
 
 
 @run_async
@@ -320,7 +320,7 @@ def clearall_btn(update: Update, context: CallbackContext):
         if member.status == "administrator":
             query.answer("Only owner of the chat can do this.")
         if member.status == "member":
-            query.answer("You need to be admin to do this.")
+            query.answer("You need to be admeme to do this.")
 
 
 @run_async
