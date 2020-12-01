@@ -1,7 +1,7 @@
 # Magisk Module- Module from AstrakoBot
 # Inspired from RaphaelGang's android.py
 # By DAvinash97
-
+# Credits to astrako to allowing me to use this module
 from bs4 import BeautifulSoup
 from requests import get
 from telegram import Bot, Update, ParseMode
