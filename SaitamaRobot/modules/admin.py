@@ -37,14 +37,14 @@ def promote(update: Update, context: CallbackContext) -> str:
 
     if not (promoter.can_promote_members or
             promoter.status == "creator") and not user.id in DRAGONS:
-        message.reply_text("You don't have the necessary rights to do that!")
+        message.reply_text("You don't have the necessary admeme rights to do that!")
         return
 
     user_id = extract_user(message, args)
 
     if not user_id:
         message.reply_text(
-            "You don't seem to be referring to a user or the ID specified is incorrect.."
+            "You don't seem to be referring to a user or the ID specified is incorrect.. plox check the id"
         )
         return
 
@@ -55,12 +55,12 @@ def promote(update: Update, context: CallbackContext) -> str:
 
     if user_member.status == 'administrator' or user_member.status == 'creator':
         message.reply_text(
-            "How am I meant to promote someone that's already an admin?")
+            "How am I meant to promote someone that's already an admeme?")
         return
 
     if user_id == bot.id:
         message.reply_text(
-            "I can't promote myself! Get an admin to do it for me.")
+            "I can't promote myself! Get an admeme to do it for me.")
         return
 
     # set same perms as bot - bot can't assign higher perms than itself!
@@ -94,7 +94,7 @@ def promote(update: Update, context: CallbackContext) -> str:
     log_message = (
         f"<b>{html.escape(chat.title)}:</b>\n"
         f"#PROMOTED\n"
-        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>Admeme:</b> {mention_html(user.id, user.first_name)}\n"
         f"<b>User:</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
     )
 
@@ -138,7 +138,7 @@ def demote(update: Update, context: CallbackContext) -> str:
 
     if user_id == bot.id:
         message.reply_text(
-            "I can't demote myself! Get an admin to do it for me.")
+            "I can't demote myself! Get an admeme to do it for me.")
         return
 
     try:
@@ -162,14 +162,14 @@ def demote(update: Update, context: CallbackContext) -> str:
         log_message = (
             f"<b>{html.escape(chat.title)}:</b>\n"
             f"#DEMOTED\n"
-            f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+            f"<b>Admeme:</b> {mention_html(user.id, user.first_name)}\n"
             f"<b>User:</b> {mention_html(user_member.user.id, user_member.user.first_name)}"
         )
 
         return log_message
     except BadRequest:
         message.reply_text(
-            "Could not demote. I might not be admin, or the admin status was appointed by another"
+            "Could not demote. I might not be admeme, or the admeme status was appointed by another"
             " user, so I can't act upon them!")
         return
 
@@ -182,7 +182,7 @@ def refresh_admin(update, _):
     except KeyError:
         pass
 
-    update.effective_message.reply_text("Admins cache refreshed!")
+    update.effective_message.reply_text("Admeme cache refreshed!")
 
 
 @run_async
@@ -216,13 +216,13 @@ def set_title(update: Update, context: CallbackContext):
 
     if not user_member.status == 'administrator':
         message.reply_text(
-            "Can't set title for non-admins!\nPromote them first to set custom title!"
+            "Can't set title for non-admeme!\nPromote them first to set custom title!"
         )
         return
 
     if user_id == bot.id:
         message.reply_text(
-            "I can't set my own title myself! Get the one who made me admin to do it for me."
+            "I can't set my own title myself! Get the one who made me admeme to do it for me or no meme title"
         )
         return
 
@@ -232,14 +232,14 @@ def set_title(update: Update, context: CallbackContext):
 
     if len(title) > 16:
         message.reply_text(
-            "The title length is longer than 16 characters.\nTruncating it to 16 characters."
+            "The title length is longer than 69 characters.\nTruncating it to 16 characters."
         )
 
     try:
         bot.setChatAdministratorCustomTitle(chat.id, user_id, title)
     except BadRequest:
         message.reply_text(
-            "I can't set custom title for admins that I didn't promote!")
+            "I can't set custom title for admemes that I didn't promote!")
         return
 
     bot.sendMessage(
@@ -283,7 +283,7 @@ def pin(update: Update, context: CallbackContext) -> str:
         log_message = (
             f"<b>{html.escape(chat.title)}:</b>\n"
             f"#PINNED\n"
-            f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}"
+            f"<b>Admeme:</b> {mention_html(user.id, html.escape(user.first_name))}"
         )
 
         return log_message
@@ -310,7 +310,7 @@ def unpin(update: Update, context: CallbackContext) -> str:
     log_message = (
         f"<b>{html.escape(chat.title)}:</b>\n"
         f"#UNPINNED\n"
-        f"<b>Admin:</b> {mention_html(user.id, html.escape(user.first_name))}")
+        f"<b>Admeme:</b> {mention_html(user.id, html.escape(user.first_name))}")
 
     return log_message
 
@@ -336,7 +336,7 @@ def invite(update: Update, context: CallbackContext):
             )
     else:
         update.effective_message.reply_text(
-            "I can only give you invite links for supergroups and channels, sorry!"
+            "I can only give you invite links for supergroups and channels, sorry m8!"
         )
 
 
@@ -359,13 +359,13 @@ def adminlist(update, context):
 
     try:
         msg = update.effective_message.reply_text(
-            'Fetching group admins...', parse_mode=ParseMode.HTML)
+            'Fetching group admemes...', parse_mode=ParseMode.HTML)
     except BadRequest:
         msg = update.effective_message.reply_text(
-            'Fetching group admins...', quote=False, parse_mode=ParseMode.HTML)
+            'Fetching group admemes...', quote=False, parse_mode=ParseMode.HTML)
 
     administrators = bot.getChatAdministrators(chat_id)
-    text = "Admins in <b>{}</b>:".format(
+    text = "Admemes in <b>{}</b>:".format(
         html.escape(update.effective_chat.title))
 
     bot_admin_list = []
