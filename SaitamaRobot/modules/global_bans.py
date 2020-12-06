@@ -22,7 +22,7 @@ from telegram.utils.helpers import mention_html
 GBAN_ENFORCE_GROUP = 6
 
 GBAN_ERRORS = {
-    "User is an administrator of the chat",
+    "User is an admeme of the chat",
     "Chat not found",
     "Not enough rights to restrict/unrestrict chat member",
     "User_not_participant",
@@ -37,7 +37,7 @@ GBAN_ERRORS = {
 }
 
 UNGBAN_ERRORS = {
-    "User is an administrator of the chat",
+    "User is an admeme of the chat",
     "Chat not found",
     "Not enough rights to restrict/unrestrict chat member",
     "User_not_participant",
@@ -97,7 +97,7 @@ def gban(update: Update, context: CallbackContext):
         return
 
     if user_id in [777000, 1087968824]:
-        message.reply_text("Fool! You can't attack Telegram's native tech!")
+        message.reply_text("Idiot! You can't attack Telegram's native tech if i do that things will break")
         return
 
     try:
@@ -138,7 +138,7 @@ def gban(update: Update, context: CallbackContext):
 
         return
 
-    message.reply_text("On it!")
+    message.reply_text("Gbanging idiot user")
 
     start_time = time.time()
     datetime_fmt = "%Y-%m-%dT%H:%M"
@@ -153,7 +153,7 @@ def gban(update: Update, context: CallbackContext):
     log_message = (
         f"#GBANNED\n"
         f"<b>Originated from:</b> <code>{chat_origin}</code>\n"
-        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>Admeme:</b> {mention_html(user.id, user.first_name)}\n"
         f"<b>Banned User:</b> {mention_html(user_chat.id, user_chat.first_name)}\n"
         f"<b>Banned User ID:</b> <code>{user_chat.id}</code>\n"
         f"<b>Event Stamp:</b> <code>{current_time}</code>")
@@ -219,7 +219,7 @@ def gban(update: Update, context: CallbackContext):
         send_to_list(
             bot,
             DRAGONS + DEMONS,
-            f"Gban complete! (User banned in <code>{gbanned_chats}</code> chats)",
+            f"Gbang complete! (User banned in <code>{gbanned_chats}</code> chats)",
             html=True)
 
     end_time = time.time()
@@ -283,7 +283,7 @@ def ungban(update: Update, context: CallbackContext):
     log_message = (
         f"#UNGBANNED\n"
         f"<b>Originated from:</b> <code>{chat_origin}</code>\n"
-        f"<b>Admin:</b> {mention_html(user.id, user.first_name)}\n"
+        f"<b>Admeme:</b> {mention_html(user.id, user.first_name)}\n"
         f"<b>Unbanned User:</b> {mention_html(user_chat.id, user_chat.first_name)}\n"
         f"<b>Unbanned User ID:</b> <code>{user_chat.id}</code>\n"
         f"<b>Event Stamp:</b> <code>{current_time}</code>")
@@ -363,7 +363,7 @@ def gbanlist(update: Update, context: CallbackContext):
             "There aren't any gbanned users! You're kinder than I expected...")
         return
 
-    banfile = 'Screw these guys.\n'
+    banfile = 'Screw these idiots.\n'
     for user in banned_users:
         banfile += f"[x] {user['name']} - {user['user_id']}\n"
         if user["reason"]:
@@ -389,7 +389,7 @@ def check_and_ban(update, user_id, should_message=True):
         update.effective_chat.kick_member(user_id)
         if should_message:
             update.effective_message.reply_text(
-                f"<b>Alert</b>: this user is globally banned.\n"
+                f"<b>Alert</b>: this user is gbanged by one of my sudo users.\n"
                 f"<code>*bans them from here*</code>.\n"
                 f"<b>Appeal chat</b>: {SPAMWATCH_SUPPORT_CHAT}\n"
                 f"<b>User ID</b>: <code>{sw_ban.id}</code>\n"
