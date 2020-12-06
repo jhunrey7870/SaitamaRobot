@@ -185,7 +185,7 @@ def kang(update: Update, context: CallbackContext):
                         emojis=sticker_emoji,
                     )
                     msg.reply_text(
-                        f"Sticker successfully added to [pack](t.me/addstickers/{packname})"
+                        f"Sticker successfully added to kang [pack](t.me/addstickers/{packname})"
                         + f"\nEmoji is: {sticker_emoji}",
                         parse_mode=ParseMode.MARKDOWN,
                     )
@@ -331,7 +331,7 @@ def kang(update: Update, context: CallbackContext):
                 msg.reply_text("Max packsize reached. Press F to pay respecc.")
             elif e.message == "Internal Server Error: sticker set not found (500)":
                 msg.reply_text(
-                    "Sticker successfully added to [pack](t.me/addstickers/%s)"
+                    "Sticker successfully added to kang [pack](t.me/addstickers/%s)"
                     % packname + "\n"
                     "Emoji is:" + " " + sticker_emoji,
                     parse_mode=ParseMode.MARKDOWN,
